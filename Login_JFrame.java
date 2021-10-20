@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author S
+ * @author Suzy Doan
  */
 public class Login_JFrame extends javax.swing.JFrame {
 
