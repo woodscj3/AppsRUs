@@ -1,6 +1,7 @@
 /*
  * A Moderator class which inherits the attributes/methods of
- * the User class.
+ * the User class
+ * this comment is showing Carolyn has access
  */
 public class Moderator extends User {
 
