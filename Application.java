@@ -29,4 +29,8 @@ public class Application {
 		this.comments = comments;
 		
 	}
+	
+	public Application(String appName) {
+		this.appName = appName;
+	}
 }
