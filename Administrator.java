@@ -29,11 +29,15 @@ public class Administrator extends User {
 	 * This method allows the Administrator to view users requests
 	 * @param
 	 */
-	public void viewRequest() {
+	public void viewRequest(RequestForm f) {
 		/*
 		 * This is where the code for viewing a request will
 		 * be implemented
 		 */
+		System.out.println(RequestForm.name);
+		System.out.println(RequestForm.externalLink);
+		
+		
 	}
 
 	/*
@@ -42,13 +46,15 @@ public class Administrator extends User {
 	 * @return A boolean value indicating that the user 
 	 * request was successfully accepted
 	 */
-	public boolean acceptRequest() {
+	public boolean acceptRequest(RequestForm f, ArrayList<Application> catalog) {
+		Application a = new Application(f.appName);
+		if(catalog.add(a) && requestList.remove(RequestForm)){
+	 		return true;
+	 	}
+		else {
+			return false;
+		}
 		
-		/*
-		 * This is where the code for accepting a request will
-		 * be implemented
-		 */
-		return false;
 	}
 
 	/*
@@ -57,11 +63,16 @@ public class Administrator extends User {
 	 * @return A boolean value indicating that the user 
 	 * request was successfully denied
 	 */
-	public boolean denyRequest() {
-		/*
-		 * This is where the code for deny a request will
-		 * be implemented
-		 */
+	public boolean denyRequest(RequestForm f) {
+		
+		//System.out.println("Request Denied");??
+		if (requestList.remove(f){
+			return true;
+		} else {
+			return false;
+		}
+		
+		
 		return false;
 	}
 
