@@ -48,7 +48,7 @@ public class Administrator extends User {
 	 */
 	public boolean acceptRequest(RequestForm f, ArrayList<Application> catalog) {
 		Application a = new Application(f.appName);
-		if(catalog.add(a) && requestList.remove(RequestForm)){
+		if(catalog.add(a) && requestList.remove(f)){
 	 		return true;
 	 	}
 		else {
