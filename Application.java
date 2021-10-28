@@ -17,6 +17,7 @@ public class Application {
 		this.version = "";
 		this.linkToStore = "";
 		this.price = 0;
+		this.comments = new ArrayList<String>();
 	}
 	
 	/*
@@ -32,5 +33,6 @@ public class Application {
 	
 	public Application(String appName) {
 		this.appName = appName;
+		this.comments = new ArrayList<String>();
 	}
 }
