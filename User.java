@@ -24,4 +24,7 @@ public class User {
 		this.password = password;
 	}
 	
+	void addComment(Application a, String userComment) {
+		a.comments.add(userComment);
+	}
 }
