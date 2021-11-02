@@ -1,5 +1,11 @@
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -285,7 +291,28 @@ public class Login_JFrame extends javax.swing.JFrame {
     }                                                       
 
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        PreparedStatement ps; 
+        ResultSet rs; 
+        String username = jTextField_username.getText();
+        String password = String.valueOf(jPasswordField_password.getPassword());
         
+        String query = "SELECT * FROM `UserInfo` WHERE `username`=? AND `password`=?"; 
+        
+        try {
+            ps = ConnectData.getConnection().prepareStatement(query);
+            ps.setString(1, username); 
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                JOptionPane.showMessageDialog(null, "Login successful");
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed login");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login_JFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }                                             
 
     private void jCheckBox_displayPassActionPerformed(java.awt.event.ActionEvent evt) {                                                      
