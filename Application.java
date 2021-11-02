@@ -33,4 +33,31 @@ public class Application {
 	public Application(String appName) {
 		this.appName = appName;
 	}
+	
+
+	public boolean equals(Application a2) {
+		if ((this.appName).equals(a2.appName)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/*
+	 * compares applications and returns -1 if this app is alphabetically first, 1 if
+	 * a2 is alphabetically first, 0 if this app and a2 are equal (based on appName)
+	 */
+	public int compareTo(Application a2) {
+		if (this.equals(a2)) {
+			return 0;
+		} else if (this.appName.compareTo(a2.appName) > 0) {
+				return 1;
+			}
+		else {
+			return -1;
+		}
+			
+	}
+	
+	
 }
