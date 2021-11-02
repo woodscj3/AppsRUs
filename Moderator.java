@@ -25,9 +25,12 @@ public class Moderator extends User {
 	}
 	
 	/*
-	 * 
+	 * Removes comment from application comment list based on
+	 * int parameter specifying the index and application
+	 * paramter specifying the app
 	 */
-	public void moderateComment() {
+	public void moderateComment(Application a, int commentIndex) {
+		a.comments.remove(commentIndex);
 		/*
 		 * This is where the code for moderating a comment will
 		 * be implemented
