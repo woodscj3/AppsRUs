@@ -17,6 +17,7 @@ public class Application {
 		this.version = "";
 		this.linkToStore = "";
 		this.price = 0;
+		this.comments = new ArrayList<String>();
 	}
 	
 	/*
@@ -27,11 +28,23 @@ public class Application {
 	public Application(String appName, ArrayList<String> comments) {
 		this.appName = appName;
 		this.comments = comments;
+		this.description = "";
+		this.platform = "";
+		this.version = "";
+		this.linkToStore = "";
+		this.price = 0;
 		
 	}
 	
 	public Application(String appName) {
 		this.appName = appName;
+		this.description = "";
+		this.platform = "";
+		this.version = "";
+		this.linkToStore = "";
+		this.price = 0;
+		this.comments = new ArrayList<String>();
+		
 	}
 	
 
