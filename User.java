@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
  * A generic representation of a User which contains a username and password
  * */
@@ -24,4 +26,14 @@ public class User {
 		this.password = password;
 	}
 	
+	void addComment(Application a, String userComment) {
+		a.comments.add(userComment);
+	}
+	
+	/*
+	 * Takes request form as paramter and adds to requestList parameter
+	 */
+	void submitRequest(RequestForm f, ArrayList<RequestForm> requestList) {
+		requestList.add(f);
+	}
 }
