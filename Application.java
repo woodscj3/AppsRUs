@@ -38,6 +38,7 @@ public class Application {
 	
 	public Application(String appName) {
 		this.appName = appName;
+		this.comments = new ArrayList<String>();
 		this.description = "";
 		this.platform = "";
 		this.version = "";
@@ -69,7 +70,7 @@ public class Application {
 		else {
 			return -1;
 		}
-			
+		 
 	}
 	
 	
