@@ -35,6 +35,10 @@ public class Application {
         this.price = price;
     }
 
+    /*
+     * Application constructor that receives a String value for the
+     * app's name, then initializes the Application object with that name.
+     */
     public Application(String appName) {
         this.appName = appName;
         this.description = "";
@@ -46,6 +50,11 @@ public class Application {
 
     }
 
+    /*
+     * Equals method that checks if two Application objects have the same
+     * name. This method receives an Application object against which the
+     * original Application object will be checked.
+     */
     public boolean equals(Application a2) {
         if ((this.appName).equals(a2.appName)) {
                 return true;
@@ -55,7 +64,7 @@ public class Application {
     }
 
     /*
-     * compares applications and returns -1 if this app is alphabetically first, 1 if
+     * Compares applications and returns -1 if this app is alphabetically first, 1 if
      * a2 is alphabetically first, 0 if this app and a2 are equal (based on appName)
      */
     public int compareTo(Application a2) {
