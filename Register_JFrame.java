@@ -1,10 +1,14 @@
 
+import java.awt.Color;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 
 /**
  *
@@ -17,6 +21,9 @@ public class Register_JFrame extends javax.swing.JFrame {
      */
     public Register_JFrame() {
         initComponents();
+        this.setLocationRelativeTo(null); //Center
+        Border bd = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white);
+        jPanel1.setBorder(bd);
     }
 
     /**
@@ -32,6 +39,7 @@ public class Register_JFrame extends javax.swing.JFrame {
         jPanel_portal = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel_close = new javax.swing.JLabel();
+        jLabel_goToDashboard = new javax.swing.JLabel();
         jLabel_minimizeWindow1 = new javax.swing.JLabel();
         jPanel_register = new javax.swing.JPanel();
         jTextField_username = new javax.swing.JTextField();
@@ -55,7 +63,7 @@ public class Register_JFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(2, 48, 71));
         jPanel1.setAutoscrolls(true);
 
-        jPanel_portal.setBackground(new java.awt.Color(235, 183, 55));
+        jPanel_portal.setBackground(new java.awt.Color(235, 183, 3));
 
         jLabel2.setBackground(new java.awt.Color(235, 183, 55));
         jLabel2.setFont(new java.awt.Font("Gurmukhi MN", 0, 36)); // NOI18N
@@ -90,6 +98,17 @@ public class Register_JFrame extends javax.swing.JFrame {
         jLabel_close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel_closeMouseClicked(evt);
+            }
+        });
+
+        jLabel_goToDashboard.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel_goToDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_goToDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_goToDashboard.setText("Go to dashboard");
+        jLabel_goToDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel_goToDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_goToDashboardMouseClicked(evt);
             }
         });
 
@@ -214,7 +233,7 @@ public class Register_JFrame extends javax.swing.JFrame {
                                 .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel_question, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(81, 81, 81)))
+                                .addGap(76, 76, 76)))
                         .addGap(12, 12, 12))))
             .addGroup(jPanel_registerLayout.createSequentialGroup()
                 .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,11 +275,11 @@ public class Register_JFrame extends javax.swing.JFrame {
                     .addComponent(jLabel_displayPass, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jLabel_question)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_register)
-                .addGap(12, 12, 12))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -275,13 +294,18 @@ public class Register_JFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jPanel_portal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel_minimizeWindow1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_close, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel_minimizeWindow1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_close, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel_goToDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,7 +318,9 @@ public class Register_JFrame extends javax.swing.JFrame {
                 .addComponent(jPanel_portal, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_goToDashboard)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -351,12 +377,14 @@ public class Register_JFrame extends javax.swing.JFrame {
         String passwordretype = String.valueOf(jPasswordField_password2.getPassword());
         
         // Check for null username and password, and check if password confirmation matches
-        if (username.equals("")) {
+        if (username.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Username cannot be blank.");
-        } else if (password.equals("")) {
+        } else if (password.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Password cannot be blank.");
         } else if (!passwordretype.equals(password)) {
             JOptionPane.showMessageDialog(null, "Password mismatch. Please retype.");
+        } else if (checkUsername(username) ) {
+            JOptionPane.showMessageDialog(null, "Username already exist. Enter a new username.");
         } else { // If non-null and passwords match, create new user instance
             PreparedStatement ps;
             String query = "INSERT INTO `UserInfo`(`username`, `password`) VALUES (?,?)";
@@ -375,6 +403,28 @@ public class Register_JFrame extends javax.swing.JFrame {
         }
     }                                                
 
+    public boolean checkUsername(String username) {
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean userExist = false;
+        
+        String query = "SELECT * FROM `UserInfo` WHERE `username`=?";
+        try {
+            ps = ConnectData.getConnection().prepareStatement(query);
+            ps.setString(1, username); 
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                userExist = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Register_JFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        return userExist;
+    }
+    
+    
     private void jPasswordField_password1ActionPerformed(java.awt.event.ActionEvent evt) {                                                         
         // TODO add your handling code here:
     }                                                        
@@ -387,11 +437,19 @@ public class Register_JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                                        
 
+    private void jLabel_goToDashboardMouseClicked(java.awt.event.MouseEvent evt) {                                                  
+        DashboardJFrame dashboard = new DashboardJFrame();
+        dashboard.setVisible(true);
+        dashboard.pack();
+        dashboard.setLocationRelativeTo(null);
+        dashboard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose(); //Terminate register form if dashboard appears
+    }                                                 
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -406,6 +464,7 @@ public class Register_JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_close;
     private javax.swing.JLabel jLabel_displayPass;
+    private javax.swing.JLabel jLabel_goToDashboard;
     private javax.swing.JLabel jLabel_minimizeWindow1;
     private javax.swing.JLabel jLabel_pass;
     private javax.swing.JLabel jLabel_pass2;
