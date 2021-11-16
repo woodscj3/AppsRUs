@@ -51,7 +51,7 @@ public class Administrator extends User {
 		Application a = new Application(f.appName);
 		boolean added = catalog.add(a);
 		boolean removed = requestList.remove(f);
-		if(added && removed){
+		if(added && removed && !catalog.contains(a)){
 	 		return true;
 	 	}
 		else {
