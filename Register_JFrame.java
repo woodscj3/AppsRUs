@@ -384,10 +384,10 @@ public class Register_JFrame extends javax.swing.JFrame {
         } else if (!passwordretype.equals(password)) {
             JOptionPane.showMessageDialog(null, "Password mismatch. Please retype.");
         } else if (checkUsername(username) ) {
-            JOptionPane.showMessageDialog(null, "Username already exist. Enter a new username.");
+            JOptionPane.showMessageDialog(null, "Username already existed. Enter a new username.");
         } else { // If non-null and passwords match, create new user instance
             PreparedStatement ps;
-            String query = "INSERT INTO `UserInfo`(`username`, `password`) VALUES (?,?)";
+            String query = "INSERT INTO `UserInfo`(`username`, `userPassword`) VALUES (?,?)";
             try {
                 ps = ConnectData.getConnection().prepareStatement(query);
                 ps.setString(1, username); 
