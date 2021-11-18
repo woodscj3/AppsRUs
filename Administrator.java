@@ -50,7 +50,7 @@ public class Administrator extends User {
 	public boolean acceptRequest(RequestForm f, ArrayList<Application> catalog, ArrayList<RequestForm> requestList) {
 		Application a = new Application(f.appName);
 		for (Application app : catalog) {
-			if (a.appName.equals(f.appName)) {
+			if (app.appName.equals(f.appName)) {
 				return false;
 			}
 		}
