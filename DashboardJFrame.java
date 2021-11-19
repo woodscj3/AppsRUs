@@ -14,10 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Suzy Doan
- */
+
 public class DashboardJFrame extends javax.swing.JFrame {
 
     /**
@@ -26,16 +23,12 @@ public class DashboardJFrame extends javax.swing.JFrame {
     public DashboardJFrame() {
         initComponents();
         this.setLocationRelativeTo(null); //Center
-        
-        // Add white borders
+
         Border bd = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white);
         jPanel1.setBorder(bd);
         
-//        bd = BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(247, 127, 0));
-//        jLabel_appName.setBorder(bd);
-        
         // jTable
-        filterApps(); // Connect with database
+        displayFilteredApps(); // Connect with database
         jTable_appsTable.setSelectionBackground(new Color(2,48,71));
         jTable_appsTable.setSelectionForeground(new Color(235,183,3));
         jTable_appsTable.setBackground(new Color(240, 239, 235));
@@ -61,7 +54,6 @@ public class DashboardJFrame extends javax.swing.JFrame {
         jLabel_logIn = new javax.swing.JLabel();
         jLabel_register = new javax.swing.JLabel();
         jLabel_welcome = new javax.swing.JLabel();
-        jLabel_viewRequest = new javax.swing.JLabel();
         jPanel_topPanel = new javax.swing.JPanel();
         jLabel_minimize = new javax.swing.JLabel();
         jLabel_close = new javax.swing.JLabel();
@@ -122,16 +114,6 @@ public class DashboardJFrame extends javax.swing.JFrame {
         jLabel_welcome.setForeground(new java.awt.Color(2, 48, 71));
         jLabel_welcome.setText("WELCOME!");
 
-        jLabel_viewRequest.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        jLabel_viewRequest.setForeground(new java.awt.Color(2, 48, 71));
-        jLabel_viewRequest.setText("VIEW REQUESTS");
-        jLabel_viewRequest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel_viewRequest.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_viewRequestMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel_sidePanelLayout = new javax.swing.GroupLayout(jPanel_sidePanel);
         jPanel_sidePanel.setLayout(jPanel_sidePanelLayout);
         jPanel_sidePanelLayout.setHorizontalGroup(
@@ -150,9 +132,8 @@ public class DashboardJFrame extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addGroup(jPanel_sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel_logIn)))
-                            .addComponent(jLabel_viewRequest))))
-                .addGap(0, 58, Short.MAX_VALUE))
+                                    .addComponent(jLabel_logIn))))))
+                .addGap(0, 67, Short.MAX_VALUE))
         );
         jPanel_sidePanelLayout.setVerticalGroup(
             jPanel_sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,8 +142,6 @@ public class DashboardJFrame extends javax.swing.JFrame {
                 .addComponent(jLabel_welcome)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel_home)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel_viewRequest)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel_user)
                 .addGap(18, 18, 18)
@@ -198,11 +177,6 @@ public class DashboardJFrame extends javax.swing.JFrame {
         });
 
         jTextField_searchField.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
-        jTextField_searchField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_searchFieldActionPerformed(evt);
-            }
-        });
 
         jButton_search.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jButton_search.setForeground(new java.awt.Color(2, 48, 71));
@@ -298,9 +272,9 @@ public class DashboardJFrame extends javax.swing.JFrame {
         jButton_viewRequest.setText("View Application Requests");
         jButton_viewRequest.setContentAreaFilled(false);
         jButton_viewRequest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton_viewRequest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_viewRequestActionPerformed(evt);
+        jButton_viewRequest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_viewRequestMouseClicked(evt);
             }
         });
 
@@ -461,15 +435,11 @@ public class DashboardJFrame extends javax.swing.JFrame {
         registerForm.pack();
         registerForm.setLocationRelativeTo(null);
         registerForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose(); //Terminate dashboard if register form is clicked 
+        this.dispose(); 
     }                                            
 
-    private void jTextField_searchFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                       
-        // TODO add your handling code here:
-    }                                                      
-
     private void jButton_searchActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        filterApps();
+        displayFilteredApps();
     }                                              
 
     private void jButton_requestActionPerformed(java.awt.event.ActionEvent evt) {                                                
@@ -482,23 +452,14 @@ public class DashboardJFrame extends javax.swing.JFrame {
         requestForm.pack();
         requestForm.setLocationRelativeTo(null);
         requestForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
         this.dispose();
     }                                            
-
-    private void jButton_viewRequestActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        // TODO add your handling code here:
-    }                                                   
-
-    private void jLabel_viewRequestMouseClicked(java.awt.event.MouseEvent evt) {                                                
-        // TODO add your handling code here:
-    }                                               
 
     private void jTable_appsTableMouseClicked(java.awt.event.MouseEvent evt) {                                              
         // Display the highlighted app
         int index = jTable_appsTable.getSelectedRow();
         String appName = jTable_appsTable.getValueAt(index, 0).toString();
-        Application currApp = Application.getAppByName(appName);
+        Application currApp = Application.getAppByName("AppInfo", appName);
         
         if (currApp != null) {
             jLabel_name.setText("Name: " + currApp.appName);
@@ -511,10 +472,19 @@ public class DashboardJFrame extends javax.swing.JFrame {
         }
     }                                             
 
+    private void jButton_viewRequestMouseClicked(java.awt.event.MouseEvent evt) {                                                 
+        RequestListJFrame reqList = new RequestListJFrame();
+        reqList.setVisible(true);
+        reqList.pack();
+        reqList.setLocationRelativeTo(null);
+        reqList.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }                                                
+
     /**
      * Method that performs the filtering
      */
-    public ArrayList<Application> listApps(String input) {
+    public ArrayList<Application> filterApps(String input) {
         ArrayList<Application> appsArr = new ArrayList<Application>();
         PreparedStatement ps;
         Statement st;
@@ -550,8 +520,8 @@ public class DashboardJFrame extends javax.swing.JFrame {
     /**
      * Method that displays the filtered results 
      */
-    public void filterApps() {
-        ArrayList<Application> appsArr = listApps(jTextField_searchField.getText());
+    public void displayFilteredApps() {
+        ArrayList<Application> appsArr = filterApps(jTextField_searchField.getText());
         DefaultTableModel tb = new DefaultTableModel();
         
         tb.setColumnIdentifiers(new Object[]{"Name", "Description",
@@ -600,7 +570,6 @@ public class DashboardJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_register;
     private javax.swing.JLabel jLabel_user;
     private javax.swing.JLabel jLabel_version;
-    private javax.swing.JLabel jLabel_viewRequest;
     public javax.swing.JLabel jLabel_welcome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_appInfo;
