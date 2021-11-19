@@ -6,17 +6,14 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Suzy Doan
- */
+
 public class ConnectData {
     
     public static Connection getConnection() {
         Connection con = null;
-        String ENDPOINT = "jdbc:mysql://34.70.5.204/CSE201";
-        String USERNAME = "doantx"; 
-        String PASSWORD = "group11pass";
+        String ENDPOINT = "jdbc:mysql://35.192.94.228/CSE201";
+        String USERNAME = "root"; 
+        String PASSWORD = "";
         
          try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -25,6 +22,17 @@ public class ConnectData {
             System.out.println(ex.getMessage());
         }
         return con; 
+
+        // Local database
+//        Connection con = null;
+//         try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            con = DriverManager.getConnection("jdbc:mysql://localhost/userinfo", "root", "");
+//        } catch (Exception ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        return con; 
+    
     }
     
     public ResultSet getData(String input) {
