@@ -10,18 +10,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
-/**
- *
- * @author Suzy Doan
- */
+
 public class Login_JFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login_JFrame
-     */
     public Login_JFrame() {
         initComponents();
-        this.setLocationRelativeTo(null); //Center
+        this.setLocationRelativeTo(null);
         Border bd = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white);
         jPanel1.setBorder(bd);
     }
@@ -342,7 +336,6 @@ public class Login_JFrame extends javax.swing.JFrame {
     }                                             
 
     private void jCheckBox_displayPassActionPerformed(java.awt.event.ActionEvent evt) {                                                      
-        // Display user's password
         if(jCheckBox_displayPass.isSelected()) 
             jPasswordField_password.setEchoChar((char)0);
         else 
@@ -359,7 +352,7 @@ public class Login_JFrame extends javax.swing.JFrame {
         registerForm.pack();
         registerForm.setLocationRelativeTo(null);
         registerForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose(); //Terminate login form if register form is clicked 
+        this.dispose(); 
     }                                            
 
     private void jLabel_closeMouseClicked(java.awt.event.MouseEvent evt) {                                          
@@ -372,7 +365,7 @@ public class Login_JFrame extends javax.swing.JFrame {
         dashboard.pack();
         dashboard.setLocationRelativeTo(null);
         dashboard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose(); //Terminate login form if dashboard appears
+        this.dispose(); 
     }                                                 
 
     /**
