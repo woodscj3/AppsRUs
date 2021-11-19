@@ -83,7 +83,7 @@ public class Application {
      */
     public void requestApp(String name) {
         PreparedStatement ps;
-        String query = "INSERT INTO `AppInfo`(`appName`, `appDescription`, `appOrganization`, "
+        String query = "INSERT INTO `AppRequest`(`appName`, `appDescription`, `appOrganization`, "
                 + "`appPlatform`, `appVersion`, `appLink`, `appPrice`) VALUES (?,?,?,?,?,?,?)";
         
         try {
@@ -107,11 +107,12 @@ public class Application {
         }
     }
     
-    public static Application getAppByName(String input) {
+    public static Application getAppByName(String table ,String input) {
         Application currApp = null;
         ConnectData connector = new ConnectData();
         
-        String query = "SELECT * FROM `AppInfo` WHERE `appName` = '" + input + "'";
+        String query = "SELECT * FROM `"
+                + table + "` WHERE `appName` = '" + input + "'";
         ResultSet rs = connector.getData(query);
         
         try {
