@@ -10,10 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
-/**
- *
- * @author Suzy Doan
- */
+
 public class Register_JFrame extends javax.swing.JFrame {
 
     /**
@@ -349,7 +346,7 @@ public class Register_JFrame extends javax.swing.JFrame {
         loginForm.pack();
         loginForm.setLocationRelativeTo(null);
         loginForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose(); //Terminate register form if login form is clicked
+        this.dispose();
     }                                            
 
     private void jLabel_closeMouseClicked(java.awt.event.MouseEvent evt) {                                          
@@ -361,7 +358,6 @@ public class Register_JFrame extends javax.swing.JFrame {
     }                                                   
 
     private void jCheckBox_displayPassActionPerformed(java.awt.event.ActionEvent evt) {                                                      
-        // Display user's password
         if(jCheckBox_displayPass.isSelected()) {
             jPasswordField_password1.setEchoChar((char)0);
             jPasswordField_password2.setEchoChar((char)0);
