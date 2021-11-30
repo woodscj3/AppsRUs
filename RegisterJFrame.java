@@ -11,15 +11,15 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
 
-public class Register_JFrame extends javax.swing.JFrame {
+public class RegisterJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form Register_JFrame
      */
-    public Register_JFrame() {
+    public RegisterJFrame() {
         initComponents();
         this.setLocationRelativeTo(null); //Center
-        Border bd = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white);
+        Border bd = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.white);
         jPanel1.setBorder(bd);
     }
 
@@ -38,6 +38,8 @@ public class Register_JFrame extends javax.swing.JFrame {
         jLabel_close = new javax.swing.JLabel();
         jLabel_goToDashboard = new javax.swing.JLabel();
         jLabel_minimizeWindow1 = new javax.swing.JLabel();
+        jLabel_question = new javax.swing.JLabel();
+        jLabel_login = new javax.swing.JLabel();
         jPanel_register = new javax.swing.JPanel();
         jTextField_username = new javax.swing.JTextField();
         jLabel_user = new javax.swing.JLabel();
@@ -49,13 +51,12 @@ public class Register_JFrame extends javax.swing.JFrame {
         jButton_register = new javax.swing.JButton();
         jLabel_pass2 = new javax.swing.JLabel();
         jLabel_pass3 = new javax.swing.JLabel();
-        jLabel_question = new javax.swing.JLabel();
-        jLabel_register = new javax.swing.JLabel();
+        jLabel_userType = new javax.swing.JLabel();
+        jComboBox_type = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(480, 650));
 
         jPanel1.setBackground(new java.awt.Color(2, 48, 71));
         jPanel1.setAutoscrolls(true);
@@ -98,7 +99,7 @@ public class Register_JFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel_goToDashboard.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel_goToDashboard.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jLabel_goToDashboard.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_goToDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_goToDashboard.setText("Go to dashboard");
@@ -122,38 +123,54 @@ public class Register_JFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel_question.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel_question.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel_question.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_question.setText("Already have an account?");
+
+        jLabel_login.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        jLabel_login.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_login.setText("Log in");
+        jLabel_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_loginMouseClicked(evt);
+            }
+        });
+
         jPanel_register.setBackground(new java.awt.Color(2, 48, 71));
 
-        jTextField_username.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jTextField_username.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jTextField_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_usernameActionPerformed(evt);
             }
         });
 
-        jLabel_user.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel_user.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jLabel_user.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user.setText("Username");
 
-        jLabel_pass.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel_pass.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jLabel_pass.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_pass.setText("Password");
 
-        jPasswordField_password1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jPasswordField_password1.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jPasswordField_password1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField_password1ActionPerformed(evt);
             }
         });
 
-        jPasswordField_password2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jPasswordField_password2.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jPasswordField_password2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField_password2ActionPerformed(evt);
             }
         });
 
-        jLabel_displayPass.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        jLabel_displayPass.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
         jLabel_displayPass.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_displayPass.setText("Show password");
 
@@ -165,7 +182,7 @@ public class Register_JFrame extends javax.swing.JFrame {
         });
 
         jButton_register.setBackground(new java.awt.Color(255, 255, 255));
-        jButton_register.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jButton_register.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jButton_register.setForeground(new java.awt.Color(61, 90, 128));
         jButton_register.setText("Register");
         jButton_register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -175,76 +192,64 @@ public class Register_JFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel_pass2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel_pass2.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jLabel_pass2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_pass2.setText("Retype");
 
-        jLabel_pass3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel_pass3.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jLabel_pass3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_pass3.setText("Password");
 
-        jLabel_question.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel_question.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel_question.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_question.setText("Already have an account?");
+        jLabel_userType.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        jLabel_userType.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_userType.setText("Type");
 
-        jLabel_register.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel_register.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_register.setText("Log in");
-        jLabel_register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel_register.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_registerMouseClicked(evt);
-            }
-        });
+        jComboBox_type.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        jComboBox_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Moderator", "Administrator" }));
 
         javax.swing.GroupLayout jPanel_registerLayout = new javax.swing.GroupLayout(jPanel_register);
         jPanel_register.setLayout(jPanel_registerLayout);
         jPanel_registerLayout.setHorizontalGroup(
             jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_registerLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_registerLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_registerLayout.createSequentialGroup()
-                        .addComponent(jLabel_pass)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField_password1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_registerLayout.createSequentialGroup()
-                        .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel_registerLayout.createSequentialGroup()
-                                .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel_registerLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel_pass2))
-                                    .addGroup(jPanel_registerLayout.createSequentialGroup()
-                                        .addComponent(jLabel_pass3)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton_register, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPasswordField_password2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel_registerLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel_question, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(76, 76, 76)))
-                        .addGap(12, 12, 12))))
-            .addGroup(jPanel_registerLayout.createSequentialGroup()
-                .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_registerLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel_user)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_username, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField_username, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13))
                     .addGroup(jPanel_registerLayout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(jCheckBox_displayPass)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_displayPass)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_registerLayout.createSequentialGroup()
+                                .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel_registerLayout.createSequentialGroup()
+                                        .addComponent(jLabel_pass)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPasswordField_password1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel_registerLayout.createSequentialGroup()
+                                        .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel_pass2)
+                                            .addComponent(jLabel_pass3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPasswordField_password2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(18, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_registerLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel_userType)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox_type, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel_registerLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton_register, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel_registerLayout.createSequentialGroup()
+                                                .addComponent(jCheckBox_displayPass)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel_displayPass)))))
+                                .addGap(18, 18, 18))))))
         );
         jPanel_registerLayout.setVerticalGroup(
             jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,16 +272,16 @@ public class Register_JFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel_pass3)))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_userType, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jCheckBox_displayPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel_displayPass, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(jLabel_question)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_register)
-                .addGap(18, 18, 18))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -286,11 +291,11 @@ public class Register_JFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jPanel_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jPanel_portal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel_portal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jPanel_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -301,8 +306,14 @@ public class Register_JFrame extends javax.swing.JFrame {
                         .addComponent(jLabel_close, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel_goToDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_login, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_question, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(114, 114, 114))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel_goToDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,9 +326,13 @@ public class Register_JFrame extends javax.swing.JFrame {
                 .addComponent(jPanel_portal, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel_question)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_login)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel_goToDashboard)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -325,29 +340,29 @@ public class Register_JFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(6, 6, 6))
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>                        
 
-    private void jLabel_registerMouseClicked(java.awt.event.MouseEvent evt) {                                             
-        Login_JFrame loginForm = new Login_JFrame();
+    private void jLabel_loginMouseClicked(java.awt.event.MouseEvent evt) {                                          
+        LoginJFrame loginForm = new LoginJFrame();
         loginForm.setVisible(true);
         loginForm.pack();
         loginForm.setLocationRelativeTo(null);
         loginForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }                                            
+    }                                         
 
     private void jLabel_closeMouseClicked(java.awt.event.MouseEvent evt) {                                          
         System.exit(0);
@@ -371,6 +386,7 @@ public class Register_JFrame extends javax.swing.JFrame {
         String username = jTextField_username.getText();
         String password = String.valueOf(jPasswordField_password1.getPassword());
         String passwordretype = String.valueOf(jPasswordField_password2.getPassword());
+        String userType = jComboBox_type.getSelectedItem().toString();
         
         // Check for null username and password, and check if password confirmation matches
         if (username.trim().equals("")) {
@@ -380,21 +396,22 @@ public class Register_JFrame extends javax.swing.JFrame {
         } else if (!passwordretype.equals(password)) {
             JOptionPane.showMessageDialog(null, "Password mismatch. Please retype.");
         } else if (checkUsername(username) ) {
-            JOptionPane.showMessageDialog(null, "Username already existed. Enter a new username.");
+            JOptionPane.showMessageDialog(null, "User already existed. Enter a new username.");
         } else { // If non-null and passwords match, create new user instance
             PreparedStatement ps;
-            String query = "INSERT INTO `UserInfo`(`username`, `userPassword`) VALUES (?,?)";
+            String query = "INSERT INTO `UserInfo`(`username`, `userPassword`, `userType`) VALUES (?,?,?)";
             try {
                 ps = ConnectData.getConnection().prepareStatement(query);
                 ps.setString(1, username); 
                 ps.setString(2, password);
+                ps.setString(3, userType);
 
                 if(ps.executeUpdate() > 0) {
                     JOptionPane.showMessageDialog(null, "You have successfully registered!");
                 }
                 
             } catch (SQLException ex) {
-                Logger.getLogger(Register_JFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RegisterJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }                                                
@@ -414,7 +431,7 @@ public class Register_JFrame extends javax.swing.JFrame {
                 userExist = true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Register_JFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
             
         return userExist;
@@ -449,7 +466,7 @@ public class Register_JFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register_JFrame().setVisible(true);
+                new RegisterJFrame().setVisible(true);
             }
         });
     }
@@ -457,17 +474,19 @@ public class Register_JFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton_register;
     private javax.swing.JCheckBox jCheckBox_displayPass;
+    private javax.swing.JComboBox<String> jComboBox_type;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_close;
     private javax.swing.JLabel jLabel_displayPass;
     private javax.swing.JLabel jLabel_goToDashboard;
+    private javax.swing.JLabel jLabel_login;
     private javax.swing.JLabel jLabel_minimizeWindow1;
     private javax.swing.JLabel jLabel_pass;
     private javax.swing.JLabel jLabel_pass2;
     private javax.swing.JLabel jLabel_pass3;
     private javax.swing.JLabel jLabel_question;
-    private javax.swing.JLabel jLabel_register;
     private javax.swing.JLabel jLabel_user;
+    private javax.swing.JLabel jLabel_userType;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_portal;
     private javax.swing.JPanel jPanel_register;
