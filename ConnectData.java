@@ -11,8 +11,8 @@ public class ConnectData {
     
     public static Connection getConnection() {
         Connection con = null;
-        String ENDPOINT = "jdbc:mysql://35.192.94.228/CSE201";
-        String USERNAME = "root"; 
+        String ENDPOINT = "jdbc:mysql://34.121.88.53/CSE201";
+        String USERNAME = "cse201"; 
         String PASSWORD = "";
         
          try {
