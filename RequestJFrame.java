@@ -1,12 +1,14 @@
 
+import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import javax.swing.border.Border;
 
 public class RequestJFrame extends javax.swing.JFrame {
 
@@ -15,7 +17,10 @@ public class RequestJFrame extends javax.swing.JFrame {
      */
     public RequestJFrame() {
         initComponents();
-        this.setLocationRelativeTo(null); 
+        this.setLocationRelativeTo(null);
+
+        Border bd = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.white);
+        jPanel1.setBorder(bd);
     }
 
     /**
@@ -171,7 +176,7 @@ public class RequestJFrame extends javax.swing.JFrame {
         jTextField_price.setBackground(new java.awt.Color(240, 239, 235));
         jTextField_price.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
 
-        jButton_submit.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        jButton_submit.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton_submit.setText("Submit request");
         jButton_submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton_submit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -185,7 +190,7 @@ public class RequestJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton_cancel.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        jButton_cancel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton_cancel.setText("Cancel");
         jButton_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -312,16 +317,16 @@ public class RequestJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         pack();
