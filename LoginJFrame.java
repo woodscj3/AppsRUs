@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
 
-public class Login_JFrame extends javax.swing.JFrame {
+public class LoginJFrame extends javax.swing.JFrame {
 
-    public Login_JFrame() {
+    public LoginJFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
-        Border bd = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white);
+        Border bd = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.white);
         jPanel1.setBorder(bd);
     }
 
@@ -278,16 +278,16 @@ public class Login_JFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -331,7 +331,7 @@ public class Login_JFrame extends javax.swing.JFrame {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Login_JFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }                                             
 
@@ -347,7 +347,7 @@ public class Login_JFrame extends javax.swing.JFrame {
     }                                                  
 
     private void jLabel_registerMouseClicked(java.awt.event.MouseEvent evt) {                                             
-        Register_JFrame registerForm = new Register_JFrame();
+        RegisterJFrame registerForm = new RegisterJFrame();
         registerForm.setVisible(true);
         registerForm.pack();
         registerForm.setLocationRelativeTo(null);
@@ -375,7 +375,7 @@ public class Login_JFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login_JFrame().setVisible(true);
+                new LoginJFrame().setVisible(true);
             }
         });
     }
