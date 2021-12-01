@@ -1,3 +1,7 @@
+/*
+* This JFrame allows the user to enter app information and 
+* submit the request
+*/
 
 import java.awt.Color;
 import java.sql.PreparedStatement;
@@ -123,11 +127,6 @@ public class RequestJFrame extends javax.swing.JFrame {
 
         jTextField_name.setBackground(new java.awt.Color(240, 239, 235));
         jTextField_name.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
-        jTextField_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_nameActionPerformed(evt);
-            }
-        });
 
         jLabel_description.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jLabel_description.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,11 +192,6 @@ public class RequestJFrame extends javax.swing.JFrame {
         jButton_cancel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jButton_cancel.setText("Cancel");
         jButton_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton_cancelMouseClicked(evt);
-            }
-        });
         jButton_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_cancelActionPerformed(evt);
@@ -332,67 +326,25 @@ public class RequestJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    /*
+    * Close window
+    */
     private void jLabel_closeMouseClicked(java.awt.event.MouseEvent evt) {                                          
         System.exit(0);
     }                                         
 
+    /*
+    * Minimize window
+    */
     private void jLabel_minimizeWindowMouseClicked(java.awt.event.MouseEvent evt) {                                                   
         this.setState(JFrame.ICONIFIED);
     }                                                  
 
-    private void jTextField_nameActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        // TODO add your handling code here:
-    }                                               
-
+    /*
+    * User submits application request by clicking submit button.
+    * Check that all input are valid before adding the app request to the database.
+    */
     private void jButton_submitActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
-    }                                              
-
-    private void jButton_cancelActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
-    }                                              
-
-    private void jButton_cancelMouseClicked(java.awt.event.MouseEvent evt) {                                            
-        DashboardJFrame dashboard = new DashboardJFrame();
-        dashboard.setVisible(true);
-        dashboard.pack();
-        dashboard.setLocationRelativeTo(null);
-        dashboard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose(); 
-    }                                           
-
-    public boolean checkApp(String name) {
-        PreparedStatement ps;
-        ResultSet rs;
-        boolean appExist = false;
-        
-        String query = "SELECT * FROM `AppInfo` WHERE `name`=?";
-        try {
-            ps = ConnectData.getConnection().prepareStatement(query);
-            ps.setString(1, name); 
-            rs = ps.executeQuery();
-            
-            if(rs.next()) {
-                appExist = true;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(RequestJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-        return appExist;
-    }
-    
-    public static boolean isNumeric(String input) {
-        for (char c : input.toCharArray()) {
-            if (!Character.isDigit(c)) 
-                return false;
-            
-        }
-        
-        return true;
-    }
-    
-    private void jButton_submitMouseClicked(java.awt.event.MouseEvent evt) {                                            
         String name = jTextField_name.getText();
         String description = jTextArea_description.getText();
         String organization = jTextField_organization.getText();
@@ -414,8 +366,62 @@ public class RequestJFrame extends javax.swing.JFrame {
             double price = Double.parseDouble(tempPrice);
             Application app = new Application(name, description, organization, platform, version, link, price);
             app.requestApp(name);
-            
         }
+    }                                              
+
+    /*
+    * Display DashboardJFrane and dispose this
+    */
+    private void jButton_cancelActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        DashboardJFrame dashboard = new DashboardJFrame();
+        dashboard.setVisible(true);
+        dashboard.pack();
+        dashboard.setLocationRelativeTo(null);
+        dashboard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose(); 
+    }                                              
+
+    /*
+    * A helper method that connects to the database and check if the app
+    * already exists in the database.
+    * Returns true if app already exists, and false otherwise.
+    */
+    public boolean checkApp(String name) {
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean appExist = false;
+        
+        String query = "SELECT * FROM `AppInfo` WHERE `name`=?";
+        try {
+            ps = ConnectData.getConnection().prepareStatement(query);
+            ps.setString(1, name); 
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                appExist = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RequestJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        return appExist;
+    }
+    
+    /*
+    * A helper method that checks wether if the input is a number. 
+    * Return true if input is numeric, and false otherwise. 
+    */
+    public static boolean isNumeric(String input) {
+        for (char c : input.toCharArray()) {
+            if (!Character.isDigit(c)) 
+                return false;
+        }
+        
+        return true;
+    }
+    
+    private void jButton_submitMouseClicked(java.awt.event.MouseEvent evt) {                                            
+
     }                                           
 
     /**
