@@ -9,6 +9,9 @@ import java.util.logging.Logger;
 
 public class ConnectData {
     
+    /*
+    * Establish the connection to the GCP database.
+    */
     public static Connection getConnection() {
         Connection con = null;
         String ENDPOINT = "jdbc:mysql://34.121.88.53/CSE201";
@@ -21,20 +24,12 @@ public class ConnectData {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return con; 
-
-        // Local database
-//        Connection con = null;
-//         try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            con = DriverManager.getConnection("jdbc:mysql://localhost/userinfo", "root", "");
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        return con; 
-    
+        return con;
     }
     
+    /*
+    * Connects to the database and returns the ResultSet using the input query. 
+    */
     public ResultSet getData(String input) {
         PreparedStatement ps;
         ResultSet rs = null;
