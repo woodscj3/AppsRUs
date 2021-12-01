@@ -1,4 +1,7 @@
-
+/*
+* This JFrame allows an existing user to login with valid username and password.
+* User can also return to dashboard as a guest or create a new account
+*/
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -147,18 +150,8 @@ public class LoginJFrame extends javax.swing.JFrame {
         });
 
         jPasswordField_password.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jPasswordField_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField_passwordActionPerformed(evt);
-            }
-        });
 
         jTextField_username.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jTextField_username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_usernameActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel_loginLayout = new javax.swing.GroupLayout(jPanel_login);
         jPanel_login.setLayout(jPanel_loginLayout);
@@ -293,14 +286,9 @@ public class LoginJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void jTextField_usernameActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        // TODO add your handling code here:
-    }                                                   
-
-    private void jPasswordField_passwordActionPerformed(java.awt.event.ActionEvent evt) {                                                        
-        // TODO add your handling code here:
-    }                                                       
-
+    /*
+    * Logs the user into the system using the username and password received in text fields
+    */
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {                                              
         PreparedStatement ps; 
         ResultSet rs; 
@@ -317,7 +305,6 @@ public class LoginJFrame extends javax.swing.JFrame {
             
             // User exists. Login successful
             if(rs.next()) {
-                //JOptionPane.showMessageDialog(null, "Login successful");
                 DashboardJFrame dashboard = new DashboardJFrame(); 
                 dashboard.setVisible(true);
                 dashboard.pack();
@@ -335,6 +322,9 @@ public class LoginJFrame extends javax.swing.JFrame {
         }
     }                                             
 
+    /*
+    * If user clicks on this, display password field
+    */
     private void jCheckBox_displayPassActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         if(jCheckBox_displayPass.isSelected()) 
             jPasswordField_password.setEchoChar((char)0);
@@ -342,10 +332,16 @@ public class LoginJFrame extends javax.swing.JFrame {
             jPasswordField_password.setEchoChar('*');
     }                                                     
 
+    /*
+    * Minimize window
+    */
     private void jLabel_minimizeWindowMouseClicked(java.awt.event.MouseEvent evt) {                                                   
         this.setState(JFrame.ICONIFIED);
     }                                                  
 
+    /*
+    * Display RegisterJFrame and dispose this 
+    */
     private void jLabel_registerMouseClicked(java.awt.event.MouseEvent evt) {                                             
         RegisterJFrame registerForm = new RegisterJFrame();
         registerForm.setVisible(true);
@@ -355,10 +351,16 @@ public class LoginJFrame extends javax.swing.JFrame {
         this.dispose(); 
     }                                            
 
+    /*
+    * Close window
+    */
     private void jLabel_closeMouseClicked(java.awt.event.MouseEvent evt) {                                          
         System.exit(0);
     }                                         
 
+    /*
+    * Display DashboardJFrame and close this 
+    */
     private void jLabel_goToDashboardMouseClicked(java.awt.event.MouseEvent evt) {                                                  
         DashboardJFrame dashboard = new DashboardJFrame();
         dashboard.setVisible(true);
