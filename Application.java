@@ -8,8 +8,7 @@ import javax.swing.JOptionPane;
 public class Application {
     public String appName, description, organization, platform, linkToStore, version, comment;
     double price;
-    //public ArrayList<String> comments; 
-
+    
     /*	
      * Default constructor that initializes the name, description, platform, 
      * version and link to the store of an Application
@@ -39,6 +38,9 @@ public class Application {
         this.price = price;
     }
 
+    /*
+    * Partial constructor that initializes the app name 
+    */
     public Application(String appName) {
         this.appName = appName;
         this.description = "";
@@ -49,22 +51,17 @@ public class Application {
         this.comment = "";
 
     }
-    
-    // A constructor that receives the app name and comment as Strings 
-    // and instantiates comment for the specified app.
+    /*
+    * Partial constructor that initializes the app name and its comment
+    */
     public Application(String appName, String comment) {
         this.appName = appName;
         this.comment = comment;
     }
-    
-    public Application(String appName, String appDescription, String appOrganization, double appPrice) {
-        this.appName = appName;
-        this.description = appDescription;
-        this.organization = appOrganization;
-        this.price = appPrice;
 
-    }
-
+    /**
+     * 
+     */
     public boolean equals(Application a2) {
         if ((this.appName).equals(a2.appName)) {
                 return true;
@@ -92,7 +89,7 @@ public class Application {
     }
     
     /**
-     * Request a new application
+     * Connect to the database and make an add request to the table of Requests
      */
     public void requestApp(String name) {
         PreparedStatement ps;
@@ -121,7 +118,7 @@ public class Application {
     }
     
     /**
-     * Add a new app to the database
+     * Connect to the database and add a new app to the Apps table
      */
     public void addAppToDB(String name) {
         PreparedStatement ps;
