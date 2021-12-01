@@ -1,4 +1,7 @@
-
+/*
+* This JFrame allows the user to create a new account.
+* User can also go to login page or view dashboard as guest
+*/
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +17,7 @@ import javax.swing.border.Border;
 public class RegisterJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form Register_JFrame
+     * Creates new form RegisterJFrame
      */
     public RegisterJFrame() {
         initComponents();
@@ -142,11 +145,6 @@ public class RegisterJFrame extends javax.swing.JFrame {
         jPanel_register.setBackground(new java.awt.Color(2, 48, 71));
 
         jTextField_username.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        jTextField_username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_usernameActionPerformed(evt);
-            }
-        });
 
         jLabel_user.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jLabel_user.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,18 +155,8 @@ public class RegisterJFrame extends javax.swing.JFrame {
         jLabel_pass.setText("Password");
 
         jPasswordField_password1.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        jPasswordField_password1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField_password1ActionPerformed(evt);
-            }
-        });
 
         jPasswordField_password2.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        jPasswordField_password2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField_password2ActionPerformed(evt);
-            }
-        });
 
         jLabel_displayPass.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
         jLabel_displayPass.setForeground(new java.awt.Color(255, 255, 255));
@@ -355,6 +343,9 @@ public class RegisterJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    /*
+    * Display LoginJFrame and dispose this
+    */
     private void jLabel_loginMouseClicked(java.awt.event.MouseEvent evt) {                                          
         LoginJFrame loginForm = new LoginJFrame();
         loginForm.setVisible(true);
@@ -364,14 +355,23 @@ public class RegisterJFrame extends javax.swing.JFrame {
         this.dispose();
     }                                         
 
+    /*
+    * Close window
+    */
     private void jLabel_closeMouseClicked(java.awt.event.MouseEvent evt) {                                          
         System.exit(0);
     }                                         
 
+    /*
+    * Minimize window
+    */
     private void jLabel_minimizeWindow1MouseClicked(java.awt.event.MouseEvent evt) {                                                    
         this.setState(JFrame.ICONIFIED);
     }                                                   
 
+    /*
+    * If checkbox is clicked, display both password fields
+    */
     private void jCheckBox_displayPassActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         if(jCheckBox_displayPass.isSelected()) {
             jPasswordField_password1.setEchoChar((char)0);
@@ -382,6 +382,9 @@ public class RegisterJFrame extends javax.swing.JFrame {
         }
     }                                                     
 
+    /*
+    * Create new user account using input in username and password fields
+    */
     private void jButton_registerActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         String username = jTextField_username.getText();
         String password = String.valueOf(jPasswordField_password1.getPassword());
@@ -416,6 +419,10 @@ public class RegisterJFrame extends javax.swing.JFrame {
         }
     }                                                
 
+    /*
+    * Check if input username already exists in the database.
+    * If exists, return true. Returns false otherwise 
+    */
     public boolean checkUsername(String username) {
         PreparedStatement ps;
         ResultSet rs;
@@ -437,19 +444,9 @@ public class RegisterJFrame extends javax.swing.JFrame {
         return userExist;
     }
     
-    
-    private void jPasswordField_password1ActionPerformed(java.awt.event.ActionEvent evt) {                                                         
-        // TODO add your handling code here:
-    }                                                        
-
-    private void jTextField_usernameActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        // TODO add your handling code here:
-    }                                                   
-
-    private void jPasswordField_password2ActionPerformed(java.awt.event.ActionEvent evt) {                                                         
-        // TODO add your handling code here:
-    }                                                        
-
+    /*
+    * Display DashboardJFrame and dispose this
+    */
     private void jLabel_goToDashboardMouseClicked(java.awt.event.MouseEvent evt) {                                                  
         DashboardJFrame dashboard = new DashboardJFrame();
         dashboard.setVisible(true);
