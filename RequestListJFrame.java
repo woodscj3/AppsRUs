@@ -1,3 +1,6 @@
+/*
+* This JFrame displays all application requests
+*/
 
 import java.awt.Color;
 import java.awt.Font;
@@ -24,7 +27,6 @@ public class RequestListJFrame extends javax.swing.JFrame {
     public RequestListJFrame() {
         initComponents();
         this.setLocationRelativeTo(null); //Center
-
         Border bd = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.white);
         jPanel1.setBorder(bd);
         
@@ -377,20 +379,31 @@ public class RequestListJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    /*
+    * Minimize window
+    */
     private void jLabel_minimizeMouseClicked(java.awt.event.MouseEvent evt) {                                             
         this.setState(JFrame.ICONIFIED);
     }                                            
 
+    /*
+    * Close window
+    */
     private void jLabel_closeMouseClicked(java.awt.event.MouseEvent evt) {                                          
         System.exit(0);
     }                                         
 
+    /*
+    * Perform filtering and display filtered results after search button is pressed
+    */
     private void jButton_searchActionPerformed(java.awt.event.ActionEvent evt) {                                               
         displayFilteredApps();
     }                                              
 
+    /*
+    * Display the app highlighted (though a click) in the table
+    */
     private void jTable_appsTableMouseClicked(java.awt.event.MouseEvent evt) {                                              
-        // Display the highlighted app
         int index = jTable_appsTable.getSelectedRow();
         String appName = jTable_appsTable.getValueAt(index, 0).toString();
         Application currApp = Application.getAppByName("AppRequest", appName);
@@ -406,6 +419,9 @@ public class RequestListJFrame extends javax.swing.JFrame {
         }
     }                                             
 
+    /*
+    * Display DashboardJFrame and dispose this
+    */
     private void jLabel_dashboardMouseClicked(java.awt.event.MouseEvent evt) {                                              
         DashboardJFrame dash = new DashboardJFrame();
         dash.setVisible(true);
@@ -415,6 +431,9 @@ public class RequestListJFrame extends javax.swing.JFrame {
         this.dispose();
     }                                             
 
+    /*
+    * Deny button is clicked --> remove the application request from the database
+    */
     private void jButton_denyActionPerformed(java.awt.event.ActionEvent evt) {                                             
         int index = jTable_appsTable.getSelectedRow();
         String appName = jTable_appsTable.getValueAt(index, 0).toString();
@@ -433,6 +452,10 @@ public class RequestListJFrame extends javax.swing.JFrame {
         }
     }                                            
 
+    /*
+    * Accept button is clicked --> add the application to the AppInfo database
+    * and remove the request of list of requests
+    */
     private void jButton_acceptActionPerformed(java.awt.event.ActionEvent evt) {                                               
         int index = jTable_appsTable.getSelectedRow();
         String appName = jTable_appsTable.getValueAt(index, 0).toString();
@@ -452,7 +475,7 @@ public class RequestListJFrame extends javax.swing.JFrame {
     }                                              
 
     /**
-     * Method that performs the filtering
+     * Method that performs the filtering using user input
      */
     public ArrayList<Application> filterApps(String input) {
         ArrayList<Application> appsArr = new ArrayList<Application>();
@@ -487,8 +510,9 @@ public class RequestListJFrame extends javax.swing.JFrame {
         
         return appsArr;
     }
+    
     /**
-     * Method that displays the filtered results 
+     * Method that displays the filtered results to the table
      */
     public void displayFilteredApps() {
         ArrayList<Application> appsArr = filterApps(jTextField_searchField.getText());
