@@ -1,4 +1,7 @@
-
+/*
+* The homepage of the application. Displays the list of apps in table
+* and allows the user to navigate to other JFrames like CommentList and Register
+*/
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -18,8 +21,7 @@ public class DashboardJFrame extends javax.swing.JFrame {
      */
     public DashboardJFrame() {
         initComponents();
-        this.setLocationRelativeTo(null); //Center
-
+        this.setLocationRelativeTo(null);
         Border bd = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.white);
         jPanel1.setBorder(bd);
         
@@ -419,23 +421,35 @@ public class DashboardJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    /*
+    * Minimize window
+    */
     private void jLabel_minimizeMouseClicked(java.awt.event.MouseEvent evt) {                                             
         this.setState(JFrame.ICONIFIED);
     }                                            
 
+    /*
+    * Close window
+    */
     private void jLabel_closeMouseClicked(java.awt.event.MouseEvent evt) {                                          
         System.exit(0);
     }                                         
 
+    /*
+    * Display LoginJFrame and dispose this
+    */
     private void jLabel_logInMouseClicked(java.awt.event.MouseEvent evt) {                                          
         LoginJFrame loginForm = new LoginJFrame();
         loginForm.setVisible(true);
         loginForm.pack();
         loginForm.setLocationRelativeTo(null);
         loginForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose(); //Terminate dashboard if login form is clicked
+        this.dispose();
     }                                         
 
+    /*
+    * Display RegisterJFrame and dispose this
+    */
     private void jLabel_registerMouseClicked(java.awt.event.MouseEvent evt) {                                             
         RegisterJFrame registerForm = new RegisterJFrame();
         registerForm.setVisible(true);
@@ -445,10 +459,16 @@ public class DashboardJFrame extends javax.swing.JFrame {
         this.dispose(); 
     }                                            
 
+    /*
+    * Display filtered apps when button is clicked
+    */
     private void jButton_searchActionPerformed(java.awt.event.ActionEvent evt) {                                               
         displayFilteredApps();
     }                                              
 
+    /*
+    * Display RequestJFrame and dispose this
+    */
     private void jButton_requestActionPerformed(java.awt.event.ActionEvent evt) {                                                
         RequestJFrame requestForm = new RequestJFrame();
         requestForm.setVisible(true);
@@ -458,8 +478,10 @@ public class DashboardJFrame extends javax.swing.JFrame {
         this.dispose();
     }                                               
 
+    /*
+    * Display the app highlighted (though a click) in the table
+    */
     private void jTable_appsTableMouseClicked(java.awt.event.MouseEvent evt) {                                              
-        // Display the highlighted app
         int index = jTable_appsTable.getSelectedRow();
         String appName = jTable_appsTable.getValueAt(index, 0).toString();
         Application currApp = Application.getAppByName("AppInfo", appName);
@@ -475,6 +497,9 @@ public class DashboardJFrame extends javax.swing.JFrame {
         }
     }                                             
 
+    /*
+    * Display RequestListJFrame and dispose this
+    */
     private void jButton_viewRequestActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         RequestListJFrame reqList = new RequestListJFrame();
         reqList.setVisible(true);
@@ -484,6 +509,9 @@ public class DashboardJFrame extends javax.swing.JFrame {
         this.dispose();
     }                                                   
 
+    /*
+    * Display CommentListJFrame and dispose this
+    */
     private void jButton_viewCommentsActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         CommentListJFrame comlist = new CommentListJFrame();
         comlist.setVisible(true);
@@ -493,6 +521,9 @@ public class DashboardJFrame extends javax.swing.JFrame {
         this.dispose();
     }                                                    
 
+    /*
+    * Display AddCommentJFrame and dispose this
+    */
     private void jButton_addCommentActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         AddCommentJFrame frame = new AddCommentJFrame();
         frame.setVisible(true);
@@ -503,7 +534,7 @@ public class DashboardJFrame extends javax.swing.JFrame {
     }                                                  
 
     /**
-     * Method that performs the filtering
+     * Method that performs the filtering using user input
      */
     public ArrayList<Application> filterApps(String input) {
         ArrayList<Application> appsArr = new ArrayList<Application>();
@@ -538,7 +569,7 @@ public class DashboardJFrame extends javax.swing.JFrame {
         return appsArr;
     }
     /**
-     * Method that displays the filtered results 
+     * Method that displays the filtered results to the table
      */
     public void displayFilteredApps() {
         ArrayList<Application> appsArr = filterApps(jTextField_searchField.getText());
